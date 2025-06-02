@@ -1,0 +1,122 @@
+/* ===== Reset & modelo de caja global ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Variables simples ===== */
+:root {
+  --c-primario: #003366;
+  --c-primario-claro: #0054a6;
+  --c-texto: #222;
+  --c-fondo: #fafafa;
+}
+
+/* ===== Accesibilidad: enlace “Saltar al contenido” ===== */
+.skip-link {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: .75rem 1.5rem;
+  margin: 1rem;
+  background: var(--c-primario-claro);
+  color: #fff;
+  text-decoration: none;
+  border-radius: .5rem;
+  font-weight: bold;
+  display: inline-block;
+  transition: background .3s;
+}
+.skip-link:focus {
+  background: var(--c-primario);
+  text-decoration: underline;
+}
+
+/* ===== Navegación ===== */
+nav {
+  background: var(--c-primario);
+}
+nav ul {
+  list-style: none;
+  display: flex;                 /* ✅ flex */
+  flex-wrap: wrap;
+  gap: .5rem;
+  justify-content: center;
+}
+nav a {
+  display: block;
+  padding: .75rem 1.25rem;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .3s;    /* ✅ pseudo-class hover */
+}
+nav a:hover,
+nav a:focus {
+  background: var(--c-primario-claro);
+  text-decoration: underline;
+}
+
+/* ===== Diseño principal ===== */
+body {
+  font-family: system-ui, sans-serif;
+  color: var(--c-texto);
+  background: var(--c-fondo);
+  line-height: 1.6;
+}
+
+/* Contenedor con grid para Index y About */
+.grid-2 {
+  display: grid;                 /* ✅ grid */
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Galería con flex */
+.gallery {
+  display: flex;                 /* ✅ flex */
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Imágenes – modelo de caja */
+img {
+  max-width: 100%;
+  height: auto;
+  border: 4px solid var(--c-primario);
+  padding: .25rem;
+  border-radius: .75rem;         /* base */
+  transition: transform .3s;
+}
+img:hover {
+  transform: scale(1.03);        /* hover interesante */
+}
+
+/* nth-child para variar radio de borde en galería */
+.gallery img:nth-child(3n + 1) { border-radius: 0 2rem 2rem 0; }
+.gallery img:nth-child(3n + 2) { border-radius: 2rem 0 2rem 0; }
+.gallery img:nth-child(3n + 3) { border-radius: 2rem; }
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: #111;
+  color: #eee;
+  margin-top: 3rem;
+}
+.gallery img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover; /* Recorta imagen si no tiene el mismo aspecto */
+  display: block;
+  margin: 0 auto; /* Centra horizontalmente si es necesario */
+}
